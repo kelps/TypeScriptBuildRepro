@@ -34,6 +34,6 @@ The feedback I opened for VS was closed without a solution: [TypeScript files do
 
 After researching a lot I was able to create a workaround that I thing should be added in some form to the Microsoft.TypeScript.MSBuild Nuget package. What I did was add a build task in my .csproj file that runs before the TypeScript preparation and sets the NodePath variable (if empty) to the Node installation that comes with Visual Studio. 
 
-After confirming that it worked, I took that code out and placed it in the [](Directory.Build.targets) file in the solution. I think this code should be added in some form to the .targets file in that Nuget package to serve as a fallback.
+After confirming that it worked, I took that code out and placed it in the [Directory.Build.targets](Directory.Build.targets) file in the solution. I think this code should be added in some form to the .targets file in that Nuget package to serve as a fallback.
 
-I also oppened an issue in the TypeScript repo with my suggestion: [](https://github.com/microsoft/TypeScript/issues/38247)
+I also oppened an issue in the TypeScript repo with my suggestion: [Add the Node that comes with Visual Studio as a NodePath fallback in the .targets file in the Microsoft.TypeScript.MSBuild Nuget package](https://github.com/microsoft/TypeScript/issues/38247)
