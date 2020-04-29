@@ -4,8 +4,8 @@
     "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": false,
-    "target": "es5",
-    "lib": ["ES2015","ES5","DOM"]
+    "target": "ES6",
+    "lib": [ "ES2015", "ES5", "DOM" ]
   },
   "exclude": [
     "node_modules"
