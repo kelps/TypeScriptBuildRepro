@@ -11,23 +11,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <!--https://stackoverflow.com/questions/31664834/customize-system-environment-variable-path-for-msbuild-exec-task#31670922-->
-  <!--http://blog.jdhardy.ca/2011/12/setting-environment-variables-for.html-->
-  <!--bat script for findind the Visual Studio instalation path for Node and setting it in the appropriate variable before building TypeScript files-->
-  <PropertyGroup>
-    <SetNodePath>
-    <![CDATA[
-	@setlocal enabledelayedexpansion
-	@for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere" -latest -find **\node.exe`) do (@set nodePath=%%~dpi)
-	@echo %NodePath%
-    ]]></SetNodePath>
-  </PropertyGroup>
-
-  <!--Target that runs the script above if the node path isn't set yet and it is running on Windows-->
-  <Target Name="FindAndSetNodePath" BeforeTargets="PreComputeCompileTypeScriptWithTSConfig" Condition="'$(NodePath)' == '' AND '$(OS)' == 'Windows_NT'">
-    <Exec Command="$(SetNodePath)" ConsoleToMSBuild="true">
-      <Output TaskParameter="ConsoleOutput" PropertyName="NodePath"/>
-    </Exec>
-    <Message ContinueOnError="true" Text="NodePath: $(NodePath)" Importance="high" />
-  </Target>
 </Project>
